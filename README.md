@@ -70,9 +70,9 @@ Finally, place the 29F160 to UV EPROM board in the left socket P2.
 
 SW1 and SW2 are for correctly configuring the 29F160 UV EPROM board for programming.
 
-If you are using just one 29F160 chip, place SW2 in the "1x '160" setting. If you are using two, then place SW2 in the "2x '160" setting.
+If you are using just one 29F160 chip, place SW2 in the "1x NOR" setting. If you are using two, then place SW2 in the "2x NOR" setting.
 
-When programming a 2x 29F160 board, your ROM files must be in 2MB (16Mbit) chunks. To program the first 29F160 with the first 2MB chunk, place SW1 in the "U2" setting. To program the second, switch SW1 to the "U3" setting. If you are only using 1x 29F160, this switch does nothing.
+When programming a 2x 29F160 board, your ROM files must be in 2MB (16Mbit) chunks. To program the first 29F160 with the first 2MB chunk, place SW1 in the "1ST" setting. To program the second, switch SW1 to the "2ND" setting. If you are only using 1x 29F160, this switch does nothing.
 
 ## Bill of Materials (BOM)
 
@@ -99,15 +99,20 @@ Also note that in breaking with tradition from my other repositories, I have *Di
 
 On the XGecu TSOP Programming Adapter, these 3 components are included. This is a proprietary EEPROM for communicating with the T48. I believe this is a form of copy protection. If you wish, you can transfer these components over to this board instead - this would remove the need of placing the XGecu adapter into P1. *(Maybe a clever person could reverse engineer the EEPROM by sniffing pins 5 and 6, which are the only two pins used on this chip)*
 
-## What's with the P37/VCC Pins?
+## What's with the P37/VCC and P29/GND/P18 Pins?
 
-This is basically for helping me troubleshoot v1.0 if I run into problems. One of the things I'm unsure of is if the T48 will throw an error if it detects the larger-than-normal load due to the extra circuitry on the 29F160 to UV EPROM boards. 
+This is basically for helping me troubleshoot if I run into problems. One of the things I'm unsure of is if the T48 will throw an error if it detects the larger-than-normal load due to the extra circuitry on my TSOP adapter boards. 
 
-P37 on the T48 is connected to the VCC pin of the TSOP chip, but it is not directly connected to VCC itself, which is pin 14 of J1/J2. The jumper is there in case the 29F160 to UV EPROM board current limits the programmer with the extra circuitry on it. Though, that might cause other problems, so it is not hard-wired.
+Pin 37 on the T48 is connected to the VCC pin of the TSOP chip, but it is not directly connected to VCC itself, which is pin 14 of J1/J2. The jumper is there in case the TSOP board current limits the programmer with the extra circuitry on it. Though, that might cause other problems, so it is not hard-wired. Pin 18 and pin 29 are a similar case for VSS.
 
 You can ignore these pins (unless I update the repo further to address them).
 
 ## Revision History
+
+### v1.1 - Prototype II
+
+- Disconnected pin 18 and pin 29 on P1 from VSS and connect to the proper pins on P2 instead
+- Renamed board to be more general
 
 ### v1.0 - Prototype
 
