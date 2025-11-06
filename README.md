@@ -2,9 +2,9 @@
 
 This is an untested programming adapter for the T48 for programming already-soldered 29F160 chips on my <a href="https://github.com/MouseBiteLabs/ROM-Adapter-Boards/tree/main/29F160%20to%20UV%20EPROM">29F160 to UV EPROM Adapter board.</a> This *should* make it easy to reprogram the one or two flash chips on the adapters without having to desolder anything. I have not tested this yet, so consider this *experimental*. I will, of course, update the repo accordingly if my testing proves successful.
 
-![image](https://github.com/user-attachments/assets/6a33cf20-7599-4ebf-8782-d6f4dd1de0be)
+![image](https://github.com/user-attachments/assets/ca0ac701-bc50-4d48-a3e9-59ffad45ed8c)
 
-![image](https://github.com/user-attachments/assets/c77ecf35-aa9b-4f76-a0aa-aa6b0ef8f1e3)
+![image](https://github.com/user-attachments/assets/d1044af2-7147-4e0c-a4b0-313e5c86717a)
 
 All gerbers and source files can be found in this repo, as this project is fully open source. Please read all instructions associated with this board before assembling.
 
@@ -42,21 +42,23 @@ P2 accepts the v2.0 version of the 29F160 to UV EPROM adapter boards. It does no
 
 It's much easier to assemble it in this way, as you can see here:
 
-![image](https://github.com/user-attachments/assets/69921bbd-ef35-4b68-b796-3125ad54228b)
+![image](https://github.com/user-attachments/assets/fd6a3e54-3b02-4288-86d2-1a5d258fa9e5)
 
 (Alternatively, you can use only one set of these pins with female socket headers that have longer pins so that you can place it in the T48 *and* connect the XGecu Adapter.)
 
 - P2 and the /BYTE, /RP, and /WE pins (the ones located inside the P2 footprint) are populated with simple female header sockets (2.54mm).
 
-![image](https://github.com/user-attachments/assets/6546cb8f-70b9-4c7f-8fc4-8a35c425a430)
+![image](https://github.com/user-attachments/assets/998994d5-bc5e-41f5-8b59-76cbe5e37b08)
 
 - J1 and J2 are populated with simple male header pins (2.54mm).
 
 - SW1 and SW2 are SPDT switches: https://www.digikey.com/short/zvmm2dj3
 
-- U1, R1, and C1 are discussed below. They are not needed.
+![image](https://github.com/user-attachments/assets/96887395-2e98-4863-8a21-d07e988f2c7c)
 
-### Step 2: Connect XGecu Adapter and 29F160 to UV EPROM Board
+- U1, R1, and C1 are discussed below. They are not required for operation, but may be harvested from the XGecu TSOP Adapter.
+
+### Step 2: Connect XGecu TSOP Adapter and 29F160 to UV EPROM Board
 
 With the programming adapter placed in the T48 (check polarity!), place the XGecu TSOP adapter into P1 on the left in the correct orientation. Then, connect one IDC cable from the T48's 16-pin socket to J1 (again, mind the polarity). Connect a second IDC cable from J2 to the XGecu TSOP adapter.
 
@@ -74,7 +76,24 @@ When programming a 2x 29F160 board, your ROM files must be in 2MB (16Mbit) chunk
 
 ## Bill of Materials (BOM)
 
-Todo
+As far as the headers (male and female) go, there are plenty of places to get them from at better prices. I personally have drawers full of them, so I didn't need to buy any extra. But if you're looking for exact parts, you can use these. The only parts you may need to buy, if you have a stock of headers and jumper cables ready to go, are the EG1271 switches.
+
+Please note that P1 has two different options, and Option A is a set of 2 separate part numbers (this is the option shown in pictures above in the assembly section with separate male and female headers). P2 has three separate part numbers to populate all of the pins with female sockets while being cost effective.
+
+Also note that in breaking with tradition from my other repositories, I have *Digikey* links listed. This is simply because Mouser did not have an equivalent IDC cable that didn't cost like $10. You can find all the other parts on this list at Mouser as well.
+
+| Reference     | Qty | Value/Part Number | Package                                   | Description                     | Source                                                                           |
+| ------------- | --- | ----------------- | ----------------------------------------- | ------------------------------- | -------------------------------------------------------------------------------- |
+| Cable (Opt A) | 1   | H3CCH-1606G       | 2x8, 0.1" Spacing                         | IDC Cable                       | [https://www.digikey.com/short/j5rt9349](https://www.digikey.com/short/j5rt9349) |
+| Cable (Opt B) | 1   | 1950              | \-                                        | Jumper Wire F-to-F              | [https://www.digikey.com/short/5wr7q7fz](https://www.digikey.com/short/5wr7q7fz) |
+| J1, J2        | 2   | 77313-818-16LF    | 2x8, 0.1" Spacing                         | 16 Position Header Pins, Male   | [https://www.digikey.com/short/13fhc19n](https://www.digikey.com/short/13fhc19n) |
+| SW1, SW2      | 2   | EG1271            | 2x3 Pins                                  | SPDT Slide Switch               | [https://www.digikey.com/short/vj8nm90f](https://www.digikey.com/short/vj8nm90f) |
+| P1 (Opt A)    | 2   | PPPC201LFBN-RC    | 20 Pins, 0.1" Spacing                     | 20 Position Header Pins, Female | [https://www.digikey.com/short/7rdtqfvp](https://www.digikey.com/short/7rdtqfvp) |
+|               | 2   | PRPC020SAAN-RC    | 20 Pins, 0.1" Spacing                     | 20 Position Header Pins, Male   | [https://www.digikey.com/short/zpzj5p9h](https://www.digikey.com/short/zpzj5p9h) |
+| P1 (Opt B)    | 4   | SSQ-110-03-G-S    | 10 Pins, 0.1" Spacing, 0.394" Post Length | 10 Position Header Pins, Female | [https://www.digikey.com/short/rvwzhn13](https://www.digikey.com/short/rvwzhn13) |
+| P2            | 2   | PPPC201LFBN-RC    | 20 Pins, 0.1" Spacing                     | 20 Position Header Pins, Female | [https://www.digikey.com/short/7rdtqfvp](https://www.digikey.com/short/7rdtqfvp) |
+|               | 1   | PPPC021LFBN-RC    | 2 Pins, 0.1" Spacing                      | 2 Position Header Pins, Female  | [https://www.digikey.com/short/bd5t98qm](https://www.digikey.com/short/bd5t98qm) |
+|               | 1   | PPPC031LFBN-RC    | 3 Pins, 0.1" Spacing                      | 3 Position Header Pins, Female  | [https://www.digikey.com/short/p04ft8t8](https://www.digikey.com/short/p04ft8t8) |
 
 ## What's with U1, R1, and C1?
 
