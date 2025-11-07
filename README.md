@@ -12,7 +12,7 @@ All gerbers and source files can be found in this repo, as this project is fully
 
 The zipped folder contains all the gerber files for this board. You can generally choose whatever thickness you want, but I usually stick to at least 1.0mm.
 
-You can order this board on OSH Park here: https://oshpark.com/shared_projects/W0T8aU0b
+You can order this board on OSH Park here: https://oshpark.com/shared_projects/9QicVnyQ
 
 Alternatively, you can use the zipped folder at any board fabricator you like. You may also buy the board from PCBWay using this link (NOT YET AVAILABLE) (disclosure: I receive 10% of the sale value to go towards future PCB orders of my own):
 
